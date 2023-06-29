@@ -42,9 +42,8 @@ def savings(gross_pay, tax_rate, expenses):
     tax_amount = gross_pay*(tax_rate)
     net_pay = gross_pay-tax_amount
     net_profit = net_pay-expenses
-    net_profit_rounded = net_profit//0.01*0.01
-    final = "{:.2f}".format(net_profit)
-    return(final)
+    final = net_profit//1
+    return(int(final))
 
 def material_waste(total_material, material_units, num_jobs, job_consumption):
     '''Material Waste.
@@ -81,7 +80,7 @@ def material_waste(total_material, material_units, num_jobs, job_consumption):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     total_material_used = num_jobs*job_consumption
     remaining_material = total_material-total_material_used
-    print(remaining_material,material_units)
+    return(remaining_material,material_units)
 
 def interest(principal, rate, periods):
     '''Interest.
@@ -113,7 +112,7 @@ def interest(principal, rate, periods):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     simple_interest = principal*(rate*periods)
     amount_accrued = principal + simple_interest
-    return(amount_accrued)
+    return(int(amount_accrued))
 
 def body_mass_index(weight, height):
     '''Body Mass Index.
@@ -154,6 +153,5 @@ def body_mass_index(weight, height):
     convert_inches = (height[1])*0.0254
     height_meters = convert_feet+convert_inches
     BMI_result = convert_weight/(height_meters**2)
-    final_BMI = "{:.2f}".format(BMI_result)
-    return(final_BMI)
+    return(BMI_result)
 
