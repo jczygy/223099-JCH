@@ -80,7 +80,8 @@ def material_waste(total_material, material_units, num_jobs, job_consumption):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     total_material_used = num_jobs*job_consumption
     remaining_material = total_material-total_material_used
-    return(remaining_material,material_units)
+    final = str(remaining_material) + material_units 
+    return(final)
 
 def interest(principal, rate, periods):
     '''Interest.
