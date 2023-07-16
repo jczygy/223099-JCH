@@ -51,13 +51,13 @@ def relationship_status(from_member, to_member, social_graph):
     from_into = from_member in social_graph[to_member]["following"]
     if to_infrom is True:
         if from_into is True:
-            print("friends")
+            return("friends")
         else:
-            print("follower")
+            return("follower")
     elif from_into is True:
-        print("followed by")
+        return("followed by")
     else:
-        print("no relationship")
+        return("no relationship")
 
 def tic_tac_toe(board):
     '''Tic Tac Toe.
@@ -148,15 +148,6 @@ def eta(first_stop, second_stop, route_map):
                 continue
 
     return (travel_time)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 
