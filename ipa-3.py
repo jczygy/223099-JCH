@@ -85,27 +85,26 @@ def tic_tac_toe(board):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    def tic_tac_toe(board):
-        number_rows = len(board)
-        number_cols = len(board[0])
+    number_rows = len(board)
+    number_cols = len(board[0])
 
-        for each_row in board:
-            if len(list(each_row)) == 1:
-                return each_row[0]
+    for each_row in board:
+        if len(list(each_row)) == 1:
+            return each_row[0]
 
-        for each_col in range(number_cols):
-            column = [board[each_row][each_col] for each_row in range(number_rows)]
-            if len(set(column)) == 1:
-                return column[0]
+    for each_col in range(number_cols):
+        column = [board[each_row][each_col] for each_row in range(number_rows)]
+        if len(set(column)) == 1:
+            return column[0]
 
-        diagonal1 = [board[i][i] for i in range(number_rows)]
-        diagonal2 = [board[i][number_rows - 1 - i] for i in range(number_rows)]
-        if len(set(diagonal1)) == 1:
-            return diagonal1[0]
-        elif len(set(diagonal2)) == 1:
-            return diagonal2[0]
-        else:
-            return("NO WINNER")
+    diagonal1 = [board[i][i] for i in range(number_rows)]
+    diagonal2 = [board[i][number_rows - 1 - i] for i in range(number_rows)]
+    if len(set(diagonal1)) == 1:
+        return diagonal1[0]
+    elif len(set(diagonal2)) == 1:
+        return diagonal2[0]
+    else:
+        return("NO WINNER")
 
 def eta(first_stop, second_stop, route_map):
     '''ETA.
