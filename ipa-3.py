@@ -85,26 +85,59 @@ def tic_tac_toe(board):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    number_rows = len(board)
-    number_cols = len(board[0])
+    dimension = len(board)
+    for row in board:
+        x_row = 0
+        o_row = 0
+        for each in row:
+            if each == "X":
+                x_row += 1
+                if x_row == dimension:
+                    return "X"
 
-    for each_row in board:
-        if len(list(each_row)) == 1:
-            return each_row[0]
+            elif each == "O":
+                o_row += 1
+                if o_row == dimension:
+                    return "O"
 
-    for each_col in range(number_cols):
-        column = [board[each_row][each_col] for each_row in range(number_rows)]
-        if len(set(column)) == 1:
-            return column[0]
+    for column in range(dimension):
+        x_col = 0
+        o_col = 0 
+        for each_col in range(dimension):
+            if board[each_col][column] == "X":
+                x_col += 1
+                if x_col == dimension:
+                    return "X"
+            elif board[each_col][column] == "O":
+                o_col += 1
+                if o_col == dimension:
+                    return "O"
+                
+    x_diagonal = 0 
+    o_diagonal = 0
+    for diagonal in range(dimension):
+        if board[diagonal][diagonal] == "X":
+            x_diagonal += 1
+            if x_diagonal == dimension: 
+                return "X"
+        elif board[diagonal][diagonal] == "O":
+            o_diagonal += 1 
+            if o_diagonal == dimension:
+                return "O"
 
-    diagonal1 = [board[i][i] for i in range(number_rows)]
-    diagonal2 = [board[i][number_rows - 1 - i] for i in range(number_rows)]
-    if len(set(diagonal1)) == 1:
-        return diagonal1[0]
-    elif len(set(diagonal2)) == 1:
-        return diagonal2[0]
-    else:
-        return("NO WINNER")
+    x_diagonal = 0 
+    o_diagonal = 0
+    for diagonal2 in range(dimension):
+        if board[diagonal2][dimension - diagonal2 - 1] == "X":
+            x_diagonal += 1
+            if x_diagonal == dimension:
+                return "X"
+        elif board[diagonal2][dimension - diagonal2 - 1] == "O":
+            o_diagonal += 1
+            if o_diagonal == dimension:
+                return "O"
+
+    return "NO WINNER"
 
 def eta(first_stop, second_stop, route_map):
     '''ETA.
@@ -137,14 +170,13 @@ def eta(first_stop, second_stop, route_map):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    legs = route_map
-    if (first_stop, second_stop) in legs.keys():
-        travel_time = legs[(first_stop, second_stop)]["travel_time_mins"]
+    if (first_stop, second_stop) in route_map.keys():
+        travel_time = route_map[(first_stop, second_stop)]["travel_time_mins"]
     else:
-        for each_leg in legs.keys():
+        for each_leg in route_map.keys():
             if first_stop in each_leg[0]:
                 middle_stop = each_leg[1]
-                travel_time = legs[first_stop, middle_stop]["travel_time_mins"] + legs[middle_stop, second_stop]["travel_time_mins"]
+                travel_time = route_map[first_stop, middle_stop]["travel_time_mins"] + route_map[middle_stop, second_stop]["travel_time_mins"]
             else:
                 continue
 
