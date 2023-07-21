@@ -170,17 +170,21 @@ def eta(first_stop, second_stop, route_map):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    if (first_stop, second_stop) in route_map.keys():
-        travel_time = route_map[(first_stop, second_stop)]["travel_time_mins"]
-    else:
-        for each_leg in route_map.keys():
-            if first_stop in each_leg[0]:
-                middle_stop = each_leg[1]
-                travel_time = route_map[first_stop, middle_stop]["travel_time_mins"] + route_map[middle_stop, second_stop]["travel_time_mins"]
-            else:
-                continue
+    add_time = 0
+    route_test = 0
+    
+    while first_stop != second_stop:
+        for stop2 in route_map:
+            if stop2[0] == first_stop:
+                add_time += route_map[stop2]["travel_time_mins"]
+                first_stop = stop2[1]
+                route_test += 1
+                break
+        if route_test>len(route_map):
+            return("route not fully enclosed")
+            break
 
-    return (travel_time)
+    return(add_time)
 
 
 
